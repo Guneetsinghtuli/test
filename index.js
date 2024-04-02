@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended : false}))
 app.use(cookieParser());
 
-app.use("/api/v1", routes);
+// app.use("/api/v1", routes);
 
 app.get("/", (req, res) => {
    res.send("Express on Vercel") ;
@@ -32,7 +32,7 @@ server.listen(port, () => {
 })
 }).catch((err) => {
     console.log({ err });
-    process.exit(1);
+    // process.exit(1);
 }) ;
 
 module.exports = app
