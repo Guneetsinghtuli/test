@@ -9,31 +9,33 @@ import routes from "./src/routes/index.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors(
+    
+));
 app.use(express.json());
-app.use(express.urlencoded({extended : false}))
+app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser());
 
-// app.use("/api/v1", routes);
+app.use("/api/v1", routes);
 
 app.get("/", (req, res) => {
-   res.send("Express on Vercel") ;
+    res.send("Veronica is doing great in learning");
 })
 
 const port = process.env.PORT || 5001;
 
-const server =  http.createServer(app);
+const server = http.createServer(app);
 
 mongoose.connect(process.env.MONGODB_URL).then(() => {
-console.log("Mongodb  connected");
-server.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
+    console.log("Mongodb  connected");
+    server.listen(port, () => {
+        console.log(`Server is listening on port ${port}`);
 
-})
+    })
 }).catch((err) => {
     console.log({ err });
-    // process.exit(1);
-}) ;
+    process.exit(1);
+});
 
 
 
